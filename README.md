@@ -1,8 +1,11 @@
 # Alien_invasion
 
 Python Crash Course
+
 Part II: Projects
+
 Project 1: Alien Invasion
+
 Page: 233
 
 
@@ -20,6 +23,7 @@ loses a ship. If the player loses three ships, the game ends.
 
 
 alien_invasion.py
+
 The main file, alien_invasion.py, creates a number of important objects used
 throughout the game: the settings are stored in ai_settings, the main display
 surface is stored in screen, and a ship instance is created in this file as
@@ -31,12 +35,14 @@ contain code that is imported, directly or indirectly, into this file.
 
 
 settings.py
+
 The settings.py file contains the Settings class. This class only has an
 __init__() method, which initializes attributes controlling the game’s
 appearance and the ship’s speed.
 
 
 game_functions.py
+
 The game_functions.py file contains a number of functions that carry out
 the bulk of the work in the game. The check_events() function detects relevant
 events, such as keypresses and releases, and processes each of these
@@ -47,6 +53,7 @@ redraws the screen on each pass through the main loop.
 
 
 ship.py
+
 The ship.py file contains the Ship class. Ship has an __init__() method, an
 update() method to manage the ship’s position, and a blitme() method
 to draw the ship to the screen. The actual image of the ship is stored in
