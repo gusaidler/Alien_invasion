@@ -4,9 +4,11 @@ Created on 19 de jun de 2017
 @author: gusta
 '''
 import pygame
+from pygame.sprite import Group
 from settings import Settings
 from ship import Ship
 import game_functions as gf
+
 
 '''
 To access the events detected by Pygame, well use the pygame.event.get()
@@ -16,20 +18,29 @@ def run_game():
     # Initialize pygame, settings, and screen object
     pygame.init()
     
-    #Load settings
+    # Load settings
     ai_settings = Settings()
     
-    #create a display window called screen, on which well draw all of the game graphical elements
+    # Create a display window called screen, on which well draw all of the game graphical elements
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     
     pygame.display.set_caption("Alien Invasion")
     
-    #Make a ship
-    ship = Ship(screen)
-                
+    # Make a ship, a group of bullets and a group of aliens
+    ship = Ship(ai_settings,screen)
+    bullets = Group()
+    aliens = Group()
+    
+    # Create a fleet of aliens
+    gf.create_fleet(ai_settings, screen, aliens)
+    
+    
     # Start the main loop for the game.
     while True:
-        gf.check_events()
-        gf.update_screen(ai_settings, screen, ship)
+        gf.check_events(ai_settings, screen, ship, bullets)
+        ship.update()
+        gf.update_bullets(bullets)
+        
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
      
 run_game()
